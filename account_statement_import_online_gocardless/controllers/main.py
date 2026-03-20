@@ -2,8 +2,9 @@
 # Copyright 2023 Tecnativa - Pedro M. Baeza
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
+from urllib.parse import urlencode
+
 import werkzeug
-from werkzeug.urls import url_encode
 
 from odoo import http
 from odoo.http import request
@@ -32,4 +33,4 @@ class GocardlessController(http.Controller):
             )
         else:
             params["view_type"] = "list"
-        return werkzeug.utils.redirect("/web#" + url_encode(params), 303)
+        return werkzeug.utils.redirect("/web#" + urlencode(params), 303)
